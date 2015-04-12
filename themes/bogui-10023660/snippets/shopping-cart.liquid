@@ -1,0 +1,14 @@
+{% for item in cart.items %}
+<div class="quick-cart-item">
+  <div class="quick-cart-image">
+    <a href="{{ item.url }}" title="{{ item.product.title | escape }}">
+      <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />        
+    </a>
+  </div>
+  <div class="quick-cart-details">
+    <p><a href="{{ item.url }}">{{ item.product.title }}</a><p>
+      <p>{{ item.price | money }}</p>        
+    <a class="remove_item" href="#" data-id="{{ item.variant.id }}">{{ 'cart.general.remove' | t }}</a>
+  </div>
+</div>
+{% endfor %}

@@ -1,0 +1,15 @@
+  <div class="homepage-section desktop-12 tablet-6 mobile-3">
+    <h2>{{ 'layout.homepage.products_title' | t }}</h2>  
+    <div id="product-loop">      
+      {% for product in collections[settings.homepage-collection].products limit: settings.homepage-product-limit %}
+      {% assign products-per-row = settings.products-per-row %}
+      <div class="product-index {% if template == 'index' and settings.homepage-product-display == 'carousel' %}{% else %}{% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-half mobile-half{% endif %}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">       
+      	{% if settings.product-listing-slider %}          
+        	{% include 'product-listing-slider' %}
+      	{% else %}
+      		{% include 'product-listing' %}
+      	{% endif %}
+      </div>
+      {% endfor %}
+    </div>     
+  </div> 
