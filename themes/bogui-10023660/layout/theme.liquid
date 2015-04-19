@@ -33,8 +33,8 @@
   {{ 'custom.css' | asset_url | stylesheet_tag }}
 
   <!--[if LTE IE 8]>
-  {{ 'gridlock.ie.css' | asset_url | stylesheet_tag }}  
-  <![endif]--> 
+  {{ 'gridlock.ie.css' | asset_url | stylesheet_tag }}
+  <![endif]-->
     <!--[if IE 7]>
   {{ 'font-awesome-ie7.css' | asset_url | stylesheet_tag }}
   <![endif]-->
@@ -45,10 +45,10 @@
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-  {{ 'theme.js' | asset_url | script_tag }} 
-  {{ 'option_selection.js' | shopify_asset_url | script_tag }}  
+  {{ 'theme.js' | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
   {{ 'handlebars.js' | asset_url | script_tag }}
-  {{ 'api.js' | asset_url | script_tag }}  
+  {{ 'api.js' | asset_url | script_tag }}
   {{ 'jquery.flexslider.js' | asset_url | script_tag }}
   {{ 'jquery.fs.selecter.min.js' | asset_url | script_tag }}
   {{ 'jquery.fancybox.pack.js' | asset_url | script_tag }}
@@ -82,11 +82,11 @@
 
   <script type="text/javascript">
 
-    $(window).load(function() {  
+    $(window).load(function() {
       $('.prod-container').matchHeight();
 
     });
-  </script>   
+  </script>
 
   {% if settings.popup %}
   <script type="text/javascript">
@@ -104,11 +104,11 @@
             });
           }, 4000);
         }
-      }); 
+      });
     };
 
-  </script>  
-  {% endif %}  
+  </script>
+  {% endif %}
 
 </head>
 
@@ -122,21 +122,21 @@
         <li>
           {% if customer  %}
           <a href="/account"><i class="fa fa-user"></i></a>
-          {% else %}                   
+          {% else %}
           <a href="/account/login"><i class="fa fa-user"></i></a>
           {% endif %}
         </li>
         {% endif %}
         {% if settings.show_multiple_currencies %}
         <li class="curr">{% include 'currencies-switcher' %}</li>
-        {% endif %}        
+        {% endif %}
         <li><a href="/cart"><i class="fa fa-shopping-cart"></i> <span class="item_count">{{ cart.item_count }}</span></a></li>
         <li class="shifter-handle"></li>
       </ul>
     </div>
   </div>
 
-  <div class="shifter-page">    
+  <div class="shifter-page">
     <div class="page-wrap">
       <header>
         <div id="top-bar">
@@ -144,19 +144,19 @@
             <div class="desktop-3 tablet-2 mobile-half">
               <form action="/search" method="get">
                 <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
-              </form>           
+              </form>
             </div>
 
             <div class="desktop-6 tablet-2 mobile-half">
               {{ settings.top_bar_message }}
             </div>
 
-            <ul id="cart" class="desktop-3 tablet-2 mobile-3">            
+            <ul id="cart" class="desktop-3 tablet-2 mobile-3">
               {% if shop.customer_accounts_enabled %}
               <li>
                 {% if customer  %}
                 <a href="/account">{{ 'layout.customer.my_account' | t }} <i class="fa fa-user"></i></a>
-                {% else %}                   
+                {% else %}
                 <a href="/account/login">{{ 'layout.customer.my_account' | t }}  <i class="fa fa-user"></i></a>
                 {% endif %}
               </li>
@@ -172,24 +172,25 @@
                   {% endif %}
                 </div>
               </li>
-            </ul> 
+            </ul>
           </div>
 
         </div>
 
         <div class="clear"></div>
 
-        <div id="identity" class="row">        
-          <div id="logo" class="desktop-7 tablet-9 mobile-3">       
+        <div id="identity" class="row">
+          <div id="logo" class="desktop-7 tablet-9 mobile-3">
             {% if settings.use_logo_image %}
             <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
             {% else %}
             <h1><a href="/">{{ shop.name }}</a></h1>
-            {% endif %}           
-          </div>  
+            {% endif %}
+            <h2>{{ 'general.header.baseline' | t }}</h2>
+          </div>
 
 
-          <ul id="social-links" class="desktop-4 mobile-3">
+          <!-- <ul id="social-links" class="desktop-4 mobile-3">
             {% if settings.show_facebook %}<li><a href="{{ settings.facebook_url }}" target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
             {% if settings.show_twitter %}<li><a href="http://www.twitter.com/{{ settings.twittername }}" target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
             {% if settings.show_pinterest %}<li><a href="{{ settings.pinterest_url }}" target="_blank"><i class="fa fa-pinterest"></i></a></li>{% endif %}
@@ -197,18 +198,18 @@
             {% if settings.show_youtube %}<li><a href="{{ settings.youtube_url }}" target="_blank"><i class="fa fa-youtube"></i></a></li>{% endif %}
             {% if settings.show_googleplus %}<li><a href="{{ settings.googleplus_url }}" target="_blank"><i class="fa fa-google-plus"></i></a></li>{% endif %}
             {% if settings.show_instagram %}<li><a href="http://instagram.com/{{ settings.instagram-id }}" target="_blank"><i class="fa fa-instagram"></i></a></li>{% endif %}
-          </ul>                
+          </ul>                 -->
 
         </div>
 
       </header>
 
       <nav id="nav" role="navigation">
-        <div id="navigation" class="row">      
+        <div id="navigation" class="row">
 
           <ul id="nav" class="desktop-12 mobile-3">
             {% for link in linklists.main-menu.links %}
-            {% capture link_handle %}{{ link.title | handle }}{% endcapture %}            
+            {% capture link_handle %}{{ link.title | handle }}{% endcapture %}
             {% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}
             {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
             <li class="dropdown">{{ link.title | link_to: link.url }}
@@ -216,7 +217,7 @@
                 {% for l in linklists[child_list_handle].links %}
                 <li><a href="{{ l.url }}">{{ l.title }}</a>
                   {% capture child_list_handle %}{{ l.title | handleize }}{% endcapture %}
-                  {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}                   
+                  {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
                   <ul class="nested">
                     {% for l in linklists[child_list_handle].links %}
                     <li><a href="{{ l.url }}">{{ l.title }}</a></li>
@@ -232,10 +233,10 @@
             <li>{{ link.title | link_to: link.url }}</li>
             {% endif %}
             {% endfor %}
-          </ul> 
-        </div> 
+          </ul>
+        </div>
 
-      </nav>	        
+      </nav>
 
       <div class="row">
         {% if template == 'index' %}
@@ -244,32 +245,32 @@
         <a href="{{ settings.welcome_2_link }}"><div class="desktop-4 mobile-3 tablet-2 notification">{{ settings.welcome_2 }}</div></a>
         <a href="{{ settings.welcome_3_link }}"><div class="desktop-4 mobile-3 tablet-2 notification">{{ settings.welcome_3 }}</div></a>
         {% endif %}
-        {% endif %}        
+        {% endif %}
       </div>
 
       <div class="clear"></div>
 
 
-      {% if template == 'index' %}	
+      {% if template == 'index' %}
       {{ content_for_layout }}
-      {% else %}	
-      <div id="content" class="row">	
+      {% else %}
+      <div id="content" class="row">
         {% if template != 'index' %}
         {% if settings.breadcrumb %}
-        {% include 'breadcrumb' %}	
-        {% endif %}	
+        {% include 'breadcrumb' %}
         {% endif %}
-        {{ content_for_layout }}  
+        {% endif %}
+        {{ content_for_layout }}
       </div>
       {% endif %}
 
-    </div>  
+    </div>
 
     <div id="newsletter">
       <div class="row">
         {% include 'mailing' %}
       </div>
-    </div>  
+    </div>
 
     <footer>
 
@@ -278,7 +279,7 @@
         <div class="desktop-3 mobile-3">
           <div class="section-title">
             <h4>{{ 'layout.footer.section_1_title' | t }}</h4>
-          </div>        
+          </div>
           <ul>
             {% if settings.show-email %}<li><label>{{ 'layout.footer.email_label' | t }}</label>{{ settings.email }}</li>{% endif %}
             {% if settings.show-phone %}<li><label>{{ 'layout.footer.phone_label' | t }}</label>{{ settings.phone }}</li>{% endif %}
@@ -292,7 +293,7 @@
             <div class="section-title">
               <h4>{{ 'layout.footer.section_2_title' | t }}</h4>
             </div>
-            {% for link in linklists.footer.links %}                
+            {% for link in linklists.footer.links %}
             <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
           </ul>
@@ -300,7 +301,7 @@
             <div class="section-title">
               <h4>{{ 'layout.footer.section_3_title' | t }}</h4>
             </div>
-            {% for link in linklists[settings.footer_2].links %}                
+            {% for link in linklists[settings.footer_2].links %}
             <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
           </ul>
@@ -309,30 +310,30 @@
             <div class="section-title">
               <h4>{{ 'layout.footer.section_4_title' | t }}</h4>
             </div>
-            {% for link in linklists[settings.footer_3].links %}                
+            {% for link in linklists[settings.footer_3].links %}
             <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
-          </ul>       
+          </ul>
         </div>
 
         <div class="desktop-3 mobile-3">
           <div class="section-title">
             <h4>{{ 'layout.footer.section_5_title' | t }}</h4>
-          </div>        
+          </div>
           {% for type in shop.enabled_payment_types %}
           <img src="{{ type | payment_type_img_url }}" />
-          {% endfor %}  
+          {% endfor %}
 
           <div class="clear"></div>
 
           <small>Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}<br />
             <a href="http://www.shopifythemes.net" target="_blank" title="Shopify themes">Shopify Theme</a> by Underground Media<br />
             {{ powered_by_link | replace: '" target', '/?ref=undergroundmedia" target' }}</small>
-          
+
 
 
         </div>
-      </div> 
+      </div>
 
 
     </footer>
@@ -341,7 +342,7 @@
     <li class="search">
       <form action="/search" method="get">
         <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
-      </form>           
+      </form>
     </li>
     {% for link in linklists.main-menu.links %}
     <li>{{ link.title | link_to: link.url }}
@@ -349,16 +350,16 @@
       {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
       <ul class="sub">
         {% for l in linklists[child_list_handle].links %}
-        <li><a href="{{ l.url }}">{{ l.title }}</a></li>          
+        <li><a href="{{ l.url }}">{{ l.title }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}
     </li>
-    {% endfor %}      
-  </nav>  
+    {% endfor %}
+  </nav>
   {% include 'popup' %}
-  
-  
+
+
 
   <script type="text/javascript">
     //initiating jQuery
@@ -370,9 +371,9 @@
           $('#nav').stickUp();
         });
       }
-           
+
     });
-  </script>  
+  </script>
 
   <script id="cartTemplate" type="text/x-handlebars-template">
 
@@ -387,13 +388,13 @@
         <p>
           <a href="{% raw %}{{ this.url }}{% endraw %}">{% raw %}{{ this.title }}{% endraw %}</a>
     </p>
-        <p>{% raw %}{{ this.price }}{% endraw %}</p>          
+        <p>{% raw %}{{ this.price }}{% endraw %}</p>
         <p>
           <a class="remove_item" href="#" data-id="{% raw %}{{ this.id }}{% endraw %}">{{ 'cart.general.remove' | t }}</a>
     </p>
     </div>
     </div>
-  {% raw %}{{/each}}{% endraw %}   
+  {% raw %}{{/each}}{% endraw %}
   <a class="checkout-link" href="/cart">{{ 'cart.general.checkout' | t }}</a>
 
   </script>
@@ -436,9 +437,9 @@
     $('input, textarea').placeholder();
 
   </script>
-  {% endif %}  
+  {% endif %}
 
-  {% if settings.show-facebook-like %} 
+  {% if settings.show-facebook-like %}
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -449,8 +450,8 @@
 }(document, 'script', 'facebook-jssdk'));</script>
   {% endif %}
 
-  
-  
+
+
   {% include 'currencies' %}
 </body>
 </html>

@@ -1,5 +1,8 @@
 {
   "general": {
+    "header": {
+      "baseline": "CRAFTSMANSHIP FROM CREATIVE COLOMBIAN TALENTS."
+    },
     "404": {
       "title": "Oops - We couldn't find that one",
       "subtext": "This page does not exist. Try searching for what you would like to find:",
