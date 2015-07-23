@@ -24,7 +24,8 @@
   <!-- CSS
 ================================================== -->
 
-  {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
+  <!-- {{ 'stylesheet.css' | asset_url | stylesheet_tag }} -->
+  {{ 'bogui.scss' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
   {{ 'flexslider.css' | asset_url | stylesheet_tag }}
   {{ 'queries.css' | asset_url | stylesheet_tag }}
@@ -141,18 +142,24 @@
       <header>
         <div id="top-bar">
           <div class="row">
-            <div class="desktop-3 tablet-2 mobile-half">
-              <form action="/search" method="get">
-                <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
-              </form>
-            </div>
 
             <div class="desktop-6 tablet-2 mobile-half">
-              {{ settings.top_bar_message }}
+              <!-- {{ settings.top_bar_message }} -->
+              <ul class="desktop-3">
+              {% if shop.customer_accounts_enabled %}
+                <li>
+                  {% if customer  %}
+                    <a href="/account">{{ 'layout.customer.my_account' | t }} <i class="fa fa-user"></i></a>
+                  {% else %}
+                    <a href="/account/login">{{ 'layout.customer.my_account' | t }}  <i class="fa fa-user"></i></a>
+                  {% endif %}
+                </li>
+              {% endif %}
+              </ul>
             </div>
 
             <ul id="cart" class="desktop-3 tablet-2 mobile-3">
-              {% if shop.customer_accounts_enabled %}
+              <!-- {% if shop.customer_accounts_enabled %}
               <li>
                 {% if customer  %}
                 <a href="/account">{{ 'layout.customer.my_account' | t }} <i class="fa fa-user"></i></a>
@@ -160,7 +167,7 @@
                 <a href="/account/login">{{ 'layout.customer.my_account' | t }}  <i class="fa fa-user"></i></a>
                 {% endif %}
               </li>
-              {% endif %}
+              {% endif %} -->
               {% if settings.show_multiple_currencies %}
               <li>{% include 'currencies-switcher' %}</li>
               {% endif %}
@@ -233,7 +240,14 @@
             <li>{{ link.title | link_to: link.url }}</li>
             {% endif %}
             {% endfor %}
+            <div class="desktop-3 tablet-2 mobile-half nav-search right">
+              <form action="/search" method="get">
+                <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+                <span class="fa fa-search"></span>
+              </form>
+            </div>
           </ul>
+
         </div>
 
       </nav>
@@ -276,7 +290,7 @@
 
       <div class="row">
 
-        <div class="desktop-3 mobile-3">
+        <div class="desktop-4 mobile-3">
           <div class="section-title">
             <h4>{{ 'layout.footer.section_1_title' | t }}</h4>
           </div>
@@ -288,7 +302,7 @@
         </div>
 
 
-        <div class="desktop-6 mobile-3">
+        <div class="desktop-4 mobile-3">
           <ul class="desktop-4 mobile-3">
             <div class="section-title">
               <h4>{{ 'layout.footer.section_2_title' | t }}</h4>
@@ -297,7 +311,7 @@
             <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
           </ul>
-          <ul class="desktop-4 mobile-3">
+         <!--  <ul class="desktop-4 mobile-3">
             <div class="section-title">
               <h4>{{ 'layout.footer.section_3_title' | t }}</h4>
             </div>
@@ -313,10 +327,10 @@
             {% for link in linklists[settings.footer_3].links %}
             <li>{{ link.title | link_to: link.url }}</li>
             {% endfor %}
-          </ul>
+          </ul> -->
         </div>
 
-        <div class="desktop-3 mobile-3">
+        <div class="desktop-4 mobile-3">
           <div class="section-title">
             <h4>{{ 'layout.footer.section_5_title' | t }}</h4>
           </div>
@@ -324,11 +338,11 @@
           <img src="{{ type | payment_type_img_url }}" />
           {% endfor %}
 
-          <div class="clear"></div>
+          <!-- <div class="clear"></div>
 
           <small>Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}<br />
             <a href="http://www.shopifythemes.net" target="_blank" title="Shopify themes">Shopify Theme</a> by Underground Media<br />
-            {{ powered_by_link | replace: '" target', '/?ref=undergroundmedia" target' }}</small>
+            {{ powered_by_link | replace: '" target', '/?ref=undergroundmedia" target' }}</small> -->
 
 
 
@@ -368,6 +382,7 @@
 
         $(document).ready( function() {
           //enabling stickUp on the '.navbar-wrapper' class
+          $('#top-bar').stickUp();
           $('#nav').stickUp();
         });
       }

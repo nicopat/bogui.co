@@ -1,0 +1,129 @@
+/* newsletter
+------------------------------------------------------ */
+
+
+#newsletter {
+  margin: 50px 0 0;
+  line-height: 80px;
+  text-align: center;
+  background: #ffF;
+  margin: 50px 0 0;
+  line-height: 80px;
+  text-align: center;
+  border-top: 1px solid {{ settings.newsletter-background }};
+}
+
+#newsletter label {
+  float: left;
+  color: {{ settings.newsletter-color }};
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+
+#signup,
+#social-links {
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#signup label {
+  text-align: left;
+  margin-left: 0;
+}
+
+#social-links  label {
+  text-align: left;
+  margin-left: 0;
+}
+
+#social-links ul {
+  text-align: left;
+  margin-left: 0;
+  li {
+    text-align: left;
+  }
+}
+#social-links  div {
+  overflow: hidden;
+  clear: both;
+}
+
+#newsletter #mc-embedded-subscribe {
+  float: left;
+  width: 23%;
+  display: inline-block;
+  border-radius: 0;
+  border: 1px solid transparent;
+  font-size: 13px;
+  color: {{ settings.newsletter-button-color }};
+  background: {{ settings.newsletter-button }};
+  padding: 15px 5px;
+  margin-left: 2%;
+  transition:     border-color 300ms ease-in-out;
+  -moz-transition:  border-color 300ms ease-in-out;
+  -webkit-transition: border-color 300ms ease-in-out;
+  -o-transition:    border-color 300ms ease-in-out;
+  margin-bottom: 0;
+}
+
+
+#newsletter #mc-embedded-subscribe:hover {
+  border: 1px solid {{ settings.newsletter-color }};
+  background: {{ settings.newsletter-button-hover-color }};
+}
+
+#newsletter #mce-EMAIL {
+  float: left;
+  display: inline-block;
+  width: 75%;
+  border-radius: 0;
+  border: 1px solid {{ settings.newsletter-color }};
+  background: transparent;
+  color: {{ settings.newsletter-color }};
+  margin-bottom: 0;
+}
+
+
+#newsletter #mce-EMAIL::-webkit-input-placeholder {
+   color: {{ settings.newsletter-color }};
+}
+
+#newsletter #mce-EMAIL:-moz-placeholder { /* Firefox 18- */
+   color: {{ settings.newsletter-color }};
+}
+
+#newsletter #mce-EMAIL::-moz-placeholder {  /* Firefox 19+ */
+   color: {{ settings.newsletter-color }};
+}
+
+#newsletter #mce-EMAIL:-ms-input-placeholder {
+   color: {{ settings.newsletter-color }};
+}
+
+ul#social-icons {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+ul#social-icons li {
+  display: inline-block;
+  margin: 5px 5px 0 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+ul#social-icons li a {
+  font-size: 10px;
+  color: {{ settings.newsletter-color }};
+}
+ul#social-icons li a:hover {
+  color: {{ settings.newsletter-hover }};
+}
+
+
+#subscribe_popup input#mc-embedded-subscribe {
+  width: 100%;
+}

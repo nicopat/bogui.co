@@ -23,6 +23,9 @@
       "newsletter_email": "Enter Your Email Address",
       "submit": "Join"
     },
+    "social": {
+      "social_title": "Follow us"
+    },
     "search": {
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
       "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",

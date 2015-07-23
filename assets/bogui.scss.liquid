@@ -1,10 +1,10 @@
-/*
-* Fashionopolism Responsive Shopify theme
+/* Bogui Theme
+* Based on Fashionopolism Responsive Shopify theme
 * Copyright 2015, Underground Media
 * www.undergroundmedia.co.uk
-*
-*
-* Gridlock v3.2.1 - 2014-10-28
+*/
+
+/* Gridlock v3.2.1 - 2014-10-28
 * A responsive CSS grid system. Part of the Formstone Library.
 * http://formstone.it/gridlock/
 *
@@ -1033,8 +1033,6 @@ input[type="button"]:hover {
   background: {{ settings.button_hover }};
 }
 
-
-
 /* #Forms
 ================================================== */
 
@@ -1150,13 +1148,32 @@ header {
   color: {{ settings.top_bar_color }};
   font-size: {{ settings.top_bar_size }};
 }
+#top-bar:after {
+  content: '';
+  background: url(top-bar_decoration.png) 0 -2px;
+  display: block;
+  height: 8px;
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  left: 0px;
+  background-size: 16px 12px;
+}
+#top-bar.stuckMenu.isStuck {
+  z-index: 100;
+  width: 100%;
+  margin: 0px auto;
+}
+#nav.stuckMenu.isStuck {
+  top: 40px !important;
+}
 
 #top-bar a {
   color: {{ settings.top_bar_color }};
   font-size: {{ settings.top_bar_size }};
 }
 
-#top-bar #q {
+#top-bar #q, #navigation #q {
   line-height: 30px;
   padding: 0 10px;
   text-indent: 0;
@@ -1164,7 +1181,7 @@ header {
   /*border: 1px solid #eee;*/
 }
 
-#top-bar #q {
+#top-bar #q, #navigation #q {
   width: 50%;
   -webkit-transition: width 1s ease-in-out;
   -moz-transition: width 1s ease-in-out;
@@ -1175,9 +1192,41 @@ header {
 
 }
 
-#top-bar #q:focus {
-  width: 100%;
+#navigation .nav-search {
+  margin-right: 0;
+  position: relative;
+  &:hover {
+    background: none;
+  }
+}
+#navigation form {
+  float: right;
+  width: 90%;
+}
 
+#navigation #q {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+}
+
+#navigation .fa-search {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  font-size: 15px;
+  color: #ccc;
+}
+
+#top-bar ul li {
+  list-style-type: none;
+}
+
+#top-bar #q:focus, #navigation #q:focus {
+  width: 100%;
 }
 
 
@@ -1211,6 +1260,10 @@ ul#cart {
 
 ul#cart li {
   display: inline-block;
+}
+
+.cart-overview:hover #crt {
+  border: none;
 }
 
 ul#cart li i {
@@ -1301,7 +1354,8 @@ ul#social-links li a:hover {
 
 nav {
   background: {{ settings.navigation }};
-  font-family: {{ settings.navigation-font }};
+  /*font-family: {{ settings.navigation-font }};*/
+  font-family: 'Playfair Display', serif;
   line-height: {{ settings.nav-height }};
   width: 100%;
   z-index: 5;
@@ -1330,8 +1384,7 @@ ul#nav li.dropdown {
 
 ul#nav li:hover {
   color: {{ settings.nav_hover_link_color }};
-  background: {{ settings.nav_hover_color }};
-
+  // background: {{ settings.nav_hover_color }};
 }
 
 ul#nav li a {
@@ -1345,14 +1398,17 @@ ul#nav li a {
 }
 
 ul#nav li a:hover {
-  background: {{ settings.nav_hover_color }};
+  // background: {{ settings.nav_hover_color }};
   color: {{ settings.nav_hover_link_color }};
   text-decoration: none;
+  border-top: 1px solid #ececec;
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
 }
 
 ul#nav li.dropdown ul.submenu {
   display: none;
-  background: {{ settings.dropdown_background_color }}! important;
+  // background: {{ settings.dropdown_background_color }}! important;
   float: left;
   position: absolute;
   top: {{ settings.nav-height }};
@@ -1372,12 +1428,16 @@ ul#nav li.dropdown > a:after {
 
 ul#nav li:hover ul.submenu {
   display: block;
-  background: {{ settings.dropdown_background_color }}! important;
+  background: #fff !important;
+  border-bottom: 1px solid #ececec;
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+
 }
 
 
 ul#nav li ul.submenu li{
-  background: {{ settings.dropdown_background_color }};
+  background: #fff;
   color: {{ settings.nav_dropdown_color }};
   width: 180px;
   text-align: left;
@@ -1385,12 +1445,12 @@ ul#nav li ul.submenu li{
 
 
 ul#nav li ul.submenu li:hover {
-  background: {{ settings.dropdown_hover_background_color }};
+  // background: {{ settings.dropdown_hover_background_color }};
 }
 
 ul#nav li ul.submenu li a:hover {
   color: {{ settings.dropdown_hover_link_color }};
-  background: {{ settings.dropdown_hover_background_color }};
+  // background: {{ settings.dropdown_hover_background_color }};
 }
 
 ul#nav li ul.submenu li a{
@@ -1440,13 +1500,12 @@ ul.nested:before {
 #nav
 {
   /* container */
+  margin: 20px auto;
 }
 #nav > a
 {
   display: none;
 }
-
-
 
 /* ====== Quick Cart ===== */
 
@@ -1530,7 +1589,6 @@ a.checkout-link:hover {
 
 
 .remove_item { float: left; margin-top: 10px; }
-
 
 /* =============== */
 /* = index.liquid = */
@@ -1719,10 +1777,10 @@ a.checkout-link:hover {
 }
 
 .customNavigation a {
-  transition:			background-color 300ms ease-in-out;
-  -moz-transition:		background-color 300ms ease-in-out;
-  -webkit-transition:	background-color 300ms ease-in-out;
-  -o-transition:		background-color 300ms ease-in-out;
+  transition:     background-color 300ms ease-in-out;
+  -moz-transition:    background-color 300ms ease-in-out;
+  -webkit-transition: background-color 300ms ease-in-out;
+  -o-transition:    background-color 300ms ease-in-out;
 }
 
 .customNavigation a:hover {
@@ -1760,10 +1818,10 @@ a.checkout-link:hover {
   font-size: 12px;
   display: inline-block;
   text-align: center;
-  transition:			background-color 300ms ease-in-out;
-  -moz-transition:		background-color 300ms ease-in-out;
-  -webkit-transition:	background-color 300ms ease-in-out;
-  -o-transition:		background-color 300ms ease-in-out;
+  transition:     background-color 300ms ease-in-out;
+  -moz-transition:    background-color 300ms ease-in-out;
+  -webkit-transition: background-color 300ms ease-in-out;
+  -o-transition:    background-color 300ms ease-in-out;
 }
 
 .owl-buttons > div:hover {
@@ -1816,8 +1874,6 @@ a.checkout-link:hover {
   color: {{ settings.cta_color_hover }};
   background: {{ settings.cta_background_hover }};
 }
-
-
 
 /* =============== */
 /* = collections = */
@@ -1990,7 +2046,6 @@ ul#sortme li.current a { text-decoration: underline; }
 .quick-shop div.bigimage.desktop-10 {
   max-width: 98.3%;
 }
-
 
 /* ================ */
 /* = Product page = */
@@ -2295,7 +2350,6 @@ dd { margin-left: 0; }
   width: 300px;
 }
 
-
 /* =============== */
 /* = Customer Accounts = */
 /* =============== */
@@ -2352,16 +2406,19 @@ a#view_address {
 
 .padded { margin-bottom: 15px; }
 
-
 /* newsletter
 ------------------------------------------------------ */
 
 
 #newsletter {
-  background: {{ settings.newsletter-background }};
   margin: 50px 0 0;
   line-height: 80px;
   text-align: center;
+  background: #ffF;
+  margin: 50px 0 0;
+  line-height: 80px;
+  text-align: center;
+  border-top: 1px solid {{ settings.newsletter-background }};
 }
 
 #newsletter label {
@@ -2373,7 +2430,34 @@ a#view_address {
   margin-top: 4px;
 }
 
-#signup { margin-top: 20px; }
+#signup,
+#social-links {
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#signup label {
+  text-align: left;
+  margin-left: 0;
+}
+
+#social-links  label {
+  text-align: left;
+  margin-left: 0;
+}
+
+#social-links ul {
+  text-align: left;
+  margin-left: 0;
+  li {
+    text-align: left;
+  }
+}
+#social-links  div {
+  overflow: hidden;
+  clear: both;
+}
 
 #newsletter #mc-embedded-subscribe {
   float: left;
@@ -2386,10 +2470,10 @@ a#view_address {
   background: {{ settings.newsletter-button }};
   padding: 15px 5px;
   margin-left: 2%;
-  transition:			border-color 300ms ease-in-out;
-  -moz-transition:	border-color 300ms ease-in-out;
-  -webkit-transition:	border-color 300ms ease-in-out;
-  -o-transition:		border-color 300ms ease-in-out;
+  transition:     border-color 300ms ease-in-out;
+  -moz-transition:  border-color 300ms ease-in-out;
+  -webkit-transition: border-color 300ms ease-in-out;
+  -o-transition:    border-color 300ms ease-in-out;
   margin-bottom: 0;
 }
 
@@ -2460,6 +2544,24 @@ ul#social-icons li a:hover {
 footer {
   padding-top: 50px;
   padding-bottom: 50px;
+  background-color: #F3F3F3;
+  position: relative;
+}
+footer:before {
+  content: '';
+  background: url(top-bar_decoration.png) 0 -2px;
+  display: block;
+  height: 8px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+  background-size: 16px 12px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 footer ul { list-style: none; }
@@ -2489,9 +2591,9 @@ footer label { margin-bottom: 0; }
 }
 
 footer img {
-width: 40px;
+  width: 40px;
+  margin: 5px;
 }
-
 
 /* =============== */
 /* = Global = */
@@ -2567,8 +2669,6 @@ width: 40px;
 }
 
 #breadcrumb { margin-bottom: 20px; }
-
-
 
 /* owl carousel
 ------------------------------------------------------ */
@@ -2800,8 +2900,6 @@ width: 40px;
   to { opacity: 0; transform: scale(1.5); }
 }
 
-
-
 /*
  * Shifter v3.1.2 - 2014-10-28
  * A jQuery plugin for simple slide-out mobile navigation. Part of the Formstone Library.
@@ -2969,5 +3067,6 @@ nav.shifter-navigation {
 }
 
 .shifter-navigation a:hover {
- 	color: {{ settings.dropdown_hover_link_color }};
+  color: {{ settings.dropdown_hover_link_color }};
 }
+
