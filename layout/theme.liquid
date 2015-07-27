@@ -143,35 +143,37 @@
         <div id="top-bar">
           <div class="row">
 
-            <div class="desktop-6 tablet-2 mobile-half">
+            <div class="desktop-third tablet-third mobile-half">
               <!-- {{ settings.top_bar_message }} -->
-              <ul class="desktop-3">
+              <ul class="desktop-6">
               {% if shop.customer_accounts_enabled %}
-                <li>
-                  {% if customer  %}
-                    <a href="/account">{{ 'layout.customer.my_account' | t }} <i class="fa fa-user"></i></a>
-                  {% else %}
-                    <a href="/account/login">{{ 'layout.customer.my_account' | t }}  <i class="fa fa-user"></i></a>
+                {% if customer %}
+                  <a href="/account">My Account</a><i class="fa fa-user"></i></a>
+                  {{ 'Log out' | customer_logout_link }}
+                {% else %}
+                  {{ 'Log in' | customer_login_link }} <span>or</span>
+                  {% if shop.customer_accounts_optional %}
+                    {{ 'Create an account' | customer_register_link }}
                   {% endif %}
-                </li>
+                {% endif %}
               {% endif %}
               </ul>
             </div>
-
-            <ul id="cart" class="desktop-3 tablet-2 mobile-3">
-              <!-- {% if shop.customer_accounts_enabled %}
-              <li>
-                {% if customer  %}
-                <a href="/account">{{ 'layout.customer.my_account' | t }} <i class="fa fa-user"></i></a>
-                {% else %}
-                <a href="/account/login">{{ 'layout.customer.my_account' | t }}  <i class="fa fa-user"></i></a>
-                {% endif %}
-              </li>
-              {% endif %} -->
-              {% if settings.show_multiple_currencies %}
-              <li>{% include 'currencies-switcher' %}</li>
+            <div id="logo-topnav" class="desktop-third tablet-third mobile-3">
+              {% if settings.use_logo_image %}
+              <a href="/"><img src="{{ 'logo-small.svg' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
+              {% else %}
+              <h1><a href="/">{{ shop.name }}</a></h1>
               {% endif %}
-              <li class="cart-overview"><a href="/cart">{{ 'layout.cart.my_cart' | t }} <i class="fa fa-shopping-cart"></i> <span class="item_count">{{ cart.item_count }}</span></a>
+            </div>
+
+            <ul id="cart" class="desktop-third tablet-third mobile-3 right">
+              {% comment %}
+                {% if settings.show_multiple_currencies %}
+                  <li>{% include 'currencies-switcher' %}</li>
+                {% endif %}
+              {% endcomment %}
+              <li class="cart-overview"><a href="/cart"><i class="fa fa-shopping-cart"></i>  {{ 'layout.cart.my_cart' | t }} <span class="item_count">({{ cart.item_count }})</span></a>
                 <div id="crt">
                   {% include 'shopping-cart' %}
                   {% if cart.item_count != 0 %}

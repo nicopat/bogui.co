@@ -1144,7 +1144,7 @@ header {
   text-align: center;
   line-height: 30px;
   background: {{ settings.top_bar_background }};
-  padding: 5px;
+  /*padding: 5px;*/
   color: {{ settings.top_bar_color }};
   font-size: {{ settings.top_bar_size }};
 }
@@ -1153,7 +1153,7 @@ header {
   background: url(top-bar_decoration.png) 0 -2px;
   display: block;
   height: 8px;
-  position: absolute;
+  /*position: absolute;*/
   top: 33px;
   width: 100%;
   left: 0px;
@@ -1165,13 +1165,41 @@ header {
   margin: 0px auto;
 }
 #nav.stuckMenu.isStuck {
-  top: 40px !important;
+  top: 20px !important;
 }
 
 #top-bar a {
   color: {{ settings.top_bar_color }};
   font-size: {{ settings.top_bar_size }};
 }
+
+#logo-topnav a {
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 32px;
+}
+#logo-topnav a img {
+    opacity: 0;
+    // width: 80px;
+}
+#top-bar #logo-topnav {
+  display: none;
+}
+#top-bar.isStuck #logo-topnav {
+  display: block;
+  border: 0;
+  height: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#top-bar.isStuck #logo-topnav img  {
+  opacity: 1;
+}
+
+
 
 #top-bar #q, #navigation #q {
   line-height: 30px;
@@ -1681,7 +1709,24 @@ a.checkout-link:hover {
   height: 100%;
 }
 
+#product-loop {
+  overflow: hidden;
+}
 
+.flex-active-slide + li {
+    left: -1%;
+    position: relative;
+}
+
+#product-loop h2 {
+  clear: both;
+  overflow: hidden;
+  font-size: 32px;
+  text-align: center;
+  margin: 22px auto;
+  padding: 0;
+  border: none;
+}
 
 .homepage-promo .caption h3 {
   font-weight: bold;
@@ -2459,15 +2504,21 @@ a#view_address {
   clear: both;
 }
 
+#mc-embedded-subscribe-form {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+}
+
 #newsletter #mc-embedded-subscribe {
   float: left;
-  width: 23%;
+  // width: 23%;
   display: inline-block;
   border-radius: 0;
   border: 1px solid transparent;
   font-size: 13px;
   color: {{ settings.newsletter-button-color }};
-  background: {{ settings.newsletter-button }};
+  // background: {{ settings.newsletter-button }};
   padding: 15px 5px;
   margin-left: 2%;
   transition:     border-color 300ms ease-in-out;
@@ -2475,12 +2526,20 @@ a#view_address {
   -webkit-transition: border-color 300ms ease-in-out;
   -o-transition:    border-color 300ms ease-in-out;
   margin-bottom: 0;
+
+  position: absolute;
+  z-index: 9;
+  right: 25%;
+  background: none;
+  text-align: left;
+  width: auto;
+
 }
 
 
 #newsletter #mc-embedded-subscribe:hover {
-  border: 1px solid {{ settings.newsletter-color }};
-  background: {{ settings.newsletter-button-hover-color }};
+  // border: 1px solid {{ settings.newsletter-color }};
+  // background: {{ settings.newsletter-button-hover-color }};
 }
 
 #newsletter #mce-EMAIL {

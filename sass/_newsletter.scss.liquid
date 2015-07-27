@@ -51,15 +51,21 @@
   clear: both;
 }
 
+#mc-embedded-subscribe-form {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+}
+
 #newsletter #mc-embedded-subscribe {
   float: left;
-  width: 23%;
+  // width: 23%;
   display: inline-block;
   border-radius: 0;
   border: 1px solid transparent;
   font-size: 13px;
   color: {{ settings.newsletter-button-color }};
-  background: {{ settings.newsletter-button }};
+  // background: {{ settings.newsletter-button }};
   padding: 15px 5px;
   margin-left: 2%;
   transition:     border-color 300ms ease-in-out;
@@ -67,12 +73,20 @@
   -webkit-transition: border-color 300ms ease-in-out;
   -o-transition:    border-color 300ms ease-in-out;
   margin-bottom: 0;
+
+  position: absolute;
+  z-index: 9;
+  right: 25%;
+  background: none;
+  text-align: left;
+  width: auto;
+
 }
 
 
 #newsletter #mc-embedded-subscribe:hover {
-  border: 1px solid {{ settings.newsletter-color }};
-  background: {{ settings.newsletter-button-hover-color }};
+  // border: 1px solid {{ settings.newsletter-color }};
+  // background: {{ settings.newsletter-button-hover-color }};
 }
 
 #newsletter #mce-EMAIL {

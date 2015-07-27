@@ -230,7 +230,7 @@
   },
   "layout": {
     "cart": {
-      "my_cart": "CART"
+      "my_cart": " Your cart"
     },
     "customer": {
       "my_account": "ACCOUNT",
