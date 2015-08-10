@@ -117,9 +117,9 @@
 
   <div id="mobile-only">
     <div class="row">
-      <ul id="mobile-menu" class="mobile-3">
-        <li><a href="/"><i class="fa fa-home"></i></a></li>
-        {% if shop.customer_accounts_enabled %}
+      <ul id="mobile-menu" class="mobile-full">
+        <li class="mobile-third left"><a href="/"><i class="fa fa-home"></i></a></li>
+        <!-- {% if shop.customer_accounts_enabled %}
         <li>
           {% if customer  %}
           <a href="/account"><i class="fa fa-user"></i></a>
@@ -127,12 +127,13 @@
           <a href="/account/login"><i class="fa fa-user"></i></a>
           {% endif %}
         </li>
-        {% endif %}
+        {% endif %} -->
         {% if settings.show_multiple_currencies %}
         <li class="curr">{% include 'currencies-switcher' %}</li>
         {% endif %}
-        <li><a href="/cart"><i class="fa fa-shopping-cart"></i> <span class="item_count">{{ cart.item_count }}</span></a></li>
-        <li class="shifter-handle"></li>
+        <!-- <li><a href="/cart"><i class="fa fa-shopping-cart"></i> <span class="item_count">{{ cart.item_count }}</span></a></li> -->
+        <li class="cart middle"><a href="/cart"><i class="fa fa-shopping-cart"></i>  {{ 'layout.cart.my_cart' | t }} <span class="item_count">({{ cart.item_count }})</span></a></li>
+        <li class="shifter-handle mobile-3 right"></li>
       </ul>
     </div>
   </div>
@@ -141,11 +142,11 @@
     <div class="page-wrap">
       <header>
         <div id="top-bar">
-          <div class="row">
+          <div class="row top-bar-links">
 
             <div class="desktop-third tablet-third mobile-half">
               <!-- {{ settings.top_bar_message }} -->
-              <ul class="desktop-6">
+              <ul class="tablet-6">
               {% if shop.customer_accounts_enabled %}
                 {% if customer %}
                   <a href="/account">My Account</a><i class="fa fa-user"></i></a>
@@ -191,7 +192,10 @@
         <div id="identity" class="row">
           <div id="logo" class="desktop-7 tablet-9 mobile-3">
             {% if settings.use_logo_image %}
-            <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
+            <a href="/">
+            <object type="image/svg+xml" data="{{ 'logo.svg' | asset_url }}" style="border: 0;">
+              <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/>
+            </object></a>
             {% else %}
             <h1><a href="/">{{ shop.name }}</a></h1>
             {% endif %}
@@ -242,12 +246,19 @@
             <li>{{ link.title | link_to: link.url }}</li>
             {% endif %}
             {% endfor %}
-            <div class="desktop-3 tablet-2 mobile-half nav-search right">
+            <!-- <div class="desktop-3 tablet-2 mobile-half nav-search right">
               <form action="/search" method="get">
                 <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
                 <span class="fa fa-search"></span>
               </form>
-            </div>
+            </div> -->
+            <div id="sb-search" class="right sb-search">
+						<form action="/search" method="get">
+							<input class="sb-search-input" placeholder="{{ 'general.search.placeholder' | t }}" type="search" name="q" id="search" >
+							<input class="sb-search-submit" type="submit" value="">
+							<span class="sb-icon-search"></span>
+						</form>
+					</div>
           </ul>
 
         </div>
@@ -441,6 +452,12 @@
 
   {{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
   {{ 'jquery.products.min.js' | asset_url | script_tag }}
+  {{ 'classie.js' | asset_url | script_tag }}
+  {{ 'uisearch.js' | asset_url | script_tag }}
+
+		<script>
+			new UISearch( document.getElementById( 'sb-search' ) );
+		</script>
 
   {% if template contains 'product' %}
 
@@ -468,7 +485,7 @@
   {% endif %}
 
 
-
+  {% include 'search-autocomplete' %}
   {% include 'currencies' %}
 </body>
 </html>

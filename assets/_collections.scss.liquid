@@ -1,0 +1,171 @@
+/* =============== */
+/* = collections = */
+/* =============== */
+
+
+#collection-description { float: left; padding-bottom: 10px; margin-bottom: 10px; }
+#collection-description h1 { margin-bottom: 5px; }
+
+@media only screen and (max-width: 1023px) {
+  .col-with-sidebar { margin-left:0; }
+}
+
+
+#collection-sidebar {
+  clear: left;
+}
+
+@media only screen and (max-width: 1023px) {
+  .dropdownwrap { display: none; width: 100%; clear: left; }
+  .col-with-sidebar { margin-left: 0; }
+}
+@media only screen and (min-width: 1024px) {
+  #dropdown { display: none; }
+  .dropdownwrap { display: block; position: absolute; top: 40px; }
+}
+
+#dropdown { margin-bottom: 20px; float: left; margin-top: -10px; border: 1px solid $dotted_color ; padding: 10px; }
+
+#collection-sidebar h4 { padding-bottom: 5px; margin-bottom: 5px; }
+#collection-sidebar ul { list-style-type: none; margin-bottom: 20px; }
+#collection-sidebar h1 { padding-bottom: 10px; border-bottom: 1px solid $dotted_color ; margin-bottom: 20px;  }
+
+#collection-sidebar ul li a.current { border-bottom: 1px solid $dotted_color ; text-decoration: none; }
+
+.show { display: none; }
+
+
+ul#sortme { width: 100%; text-align: center; }
+ul#sortme h4 { font-weight: normal; }
+
+#full-width-filter { overflow: visible; width: 100%; padding-top: 20px; padding-bottom: 20px; float: left; margin-bottom: 20px; }
+#full-width-filter .filter { display: inline-block; margin-left: 10px; }
+#full-width-filter p { margin-bottom: 5px;}
+.clearfix.filter { display: inline-block; border: 0; min-width: 200px;  }
+
+
+ul#sortme li.current a { text-decoration: underline; }
+
+.collection #product-loop { padding-top: 0; }
+.prod-container {
+  text-align: center;
+}
+
+
+.product-index { margin-bottom: 30px; position: relative; }
+
+.product-index img { display: block; margin: 0 auto 10px; }
+
+.first { clear: left; }
+
+.product-info  {
+  text-align: $details-align ;
+  margin-top: 10px;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  letter-spacing: initial;
+  font-weight: 300;
+  padding: 0;
+}
+
+#product-info p { font-size: $font-size; margin-bottom: 0; }
+#product-info a { text-decoration: none! important; text-transform: uppercase; }
+
+.prod-price { @include price-bold; }
+.compare-price, .product-price { @include price-bold; }
+.was, .product-compare-price, .compare-price { color: $sale-color ; text-decoration: line-through; }
+.was { display: inline; margin-left: 5px; }
+.onsale { @include price-bold; display: inline; }
+
+.icn {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+
+
+.new {
+  z-index: 1;
+  background: $new-background ;
+  color: $new-text ;
+}
+
+.sale-item {
+  z-index: 2;
+  background: $sale-background ;
+  color: $sale-text ;
+}
+
+.so {
+  z-index: 3;
+  background: $soldout-background ;
+  color: $soldout-text ;
+  line-height: initial! important;
+  padding-top: 13px;
+
+}
+
+
+#contact404 { }
+
+.view-full { width: 100%; text-align: right; float: left; margin-top: 10px; padding-top: 10px; margin-bottom: 10px; padding-bottom: 10px; }
+.view-full a { text-align: right; }
+.view-full a:hover { text-decoration: none; }
+.view-full i { margin-right: 10px; }
+
+.prod-des {
+  padding-top: 20px;
+}
+
+
+
+.product-modal {
+  display:none;
+  color: $read-more-link-color ! important;
+  background: $read-more-background ! important;
+  padding: 10px 20px;
+  -webkit-transition: background .5s ease,color .5s ease;
+  -moz-transition: background .5s ease,color .5s ease;
+  -o-transition: background .5s ease,color .5s ease;
+  transition: background .5s ease,color .5s ease;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -25%;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.product-modal:hover {
+  color: $read-more-link-hover-color ! important;
+  background: $read-more-hover-background ! important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.quick-shop { overflow: hidden; max-width: 800px; display: none; }
+
+.quick-shop .product-description { border: 0; }
+
+.quick-shop .thumbnail {
+  width: 24%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.quick-shop div.bigimage.desktop-10 {
+  max-width: 98.3%;
+}

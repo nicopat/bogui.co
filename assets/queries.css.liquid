@@ -33,6 +33,22 @@
 
   #product-description { border-right: 0; padding-right: 0; }
 
+  #navigation .nav-search {
+    position: absolute;
+    right: 0;
+    z-index: 0;
+    width: 40px;
+    form #q {
+        display: none;
+    }
+
+
+    &:focus {
+      width: auto;
+      background-color: white;
+    }
+  }
+
 }
 
 
@@ -89,6 +105,17 @@
     font-size: 16px;
     margin: 0 5px;
   }
+  #mobile-only ul li.cart {
+    width: initial;
+    margin-left: 25%;
+  }
+  body.shifter-open #mobile-only ul li.shifter-handle {
+    background: RGBA(0, 153, 154, 1);
+  }
+  body.shifter-open #mobile-only ul li.shifter-handle:after {
+    color: white;
+  }
+
 
   #mobile-only ul li a {
     color: {{ settings.nav_color }};

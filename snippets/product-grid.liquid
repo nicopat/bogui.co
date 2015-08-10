@@ -1,9 +1,10 @@
   <div class="homepage-section desktop-12 tablet-6 mobile-3">
+    <h2>{{ 'layout.homepage.products_title' | t }}</h2>
     <div id="product-loop">
       {% for product in collections[settings.homepage-collection].products limit: settings.homepage-product-limit %}
-        {% if forloop.index == 4 %}
-          <h2>{{ 'layout.homepage.products_title' | t }}</h2>
-        {% endif %}
+        <!-- {% if forloop.index == 4 %}
+
+        {% endif %} -->
       {% assign products-per-row = settings.products-per-row %}
 
 
