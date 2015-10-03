@@ -48,6 +48,10 @@ header {
   color: {{ settings.top_bar_color }};
   font-size: {{ settings.top_bar_size }};
 }
+#top-bar a:hover,
+#cart.desktop-third a:hover {
+  color: #E2A0BD;
+}
 
 #logo-topnav a {
   overflow: hidden;
@@ -318,7 +322,7 @@ ul#nav li a:hover {
   background: #fff;
 }
 
-ul#nav li.dropdown a:hover {
+ul#nav li.dropdown a:hover, .dropdown.hover {
   background: #fff;
   border-top: 1px solid #ececec !important;
   border-left: 1px solid #ececec !important;
@@ -335,7 +339,7 @@ ul#nav li.dropdown ul.submenu {
   position: absolute;
   top: {{ settings.nav-height }};
   left: 0;
-  z-index: 25;
+  z-index: 20;
   margin: 0;
   padding: 0;
   line-height: 30px! important;
@@ -349,13 +353,24 @@ ul#nav li.dropdown > a:after {
   content: "\f107";
   margin-left: 10px;
 }
-
+ul#nav li.dropdown.hover {
+  border-bottom: 1px solid #ffffff !important;
+  z-index: 21;
+}
 
 ul#nav li:hover ul.submenu {
   display: block;
   background: #fff !important;
   border: 1px solid #ececec;
 }
+
+ul#nav li.dropdown.hover ul.submenu:hover,
+ul#nav li.dropdown.hover ul.submenu li a:hover {
+  display: block;
+  background: #fff !important;
+  z-index: 20;
+}
+
 
 
 ul#nav li ul.submenu li{
@@ -364,7 +379,10 @@ ul#nav li ul.submenu li{
   width: 180px;
   text-align: left;
 }
-
+ul#nav li.dropdown.hover ul.submenu li a:hover {
+  border: 0px !important;
+  z-index: 20;
+}
 
 ul#nav li ul.submenu li:hover {
   // background: {{ settings.dropdown_hover_background_color }};

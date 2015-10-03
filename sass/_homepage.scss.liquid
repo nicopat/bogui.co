@@ -44,9 +44,17 @@
 
 .homepage-section h2 {
   padding: 0 0 10px;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.homepage-section h2::before {
+  content: '';
+  display: inline-block;
+  background: url('header_symbol.svg');
+  width: 32px;
+  height: 12px;
+  margin-right: 12px;
 }
 
 #instagram-feed, article-loop, #product-loop { padding-top: 20px; }

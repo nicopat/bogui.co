@@ -24,12 +24,14 @@
       <h3>{{ product.title }}</h3>
     </a>
     <div class="price">
+      <a href="{{ product.url | within: collection }}">
       {% if product.price < product.compare_at_price %}
       <div class="onsale">{{ product.price | money }}</div>
       <div class="was">{{ product.compare_at_price | money }}</div>
       {% else %}
       <div class="prod-price">{% if product.price_varies %} {{ 'products.general.from' | t }} {{ product.price_min | money }} - {{ product.price_max | money }} {% else %}{{ product.price | money }}{% endif %}</div>
       {% endif %}
+      </a>
     </div>
   </div>
 

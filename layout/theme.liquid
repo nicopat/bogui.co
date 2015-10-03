@@ -193,9 +193,8 @@
           <div id="logo" class="desktop-7 tablet-9 mobile-3">
             {% if settings.use_logo_image %}
             <a href="/">
-            <object type="image/svg+xml" data="{{ 'logo.svg' | asset_url }}" style="border: 0;">
-              <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/>
-            </object></a>
+            <img class="logo" src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}" width="162" height="70" onerror="this.removeAttribute('onerror'); this.src='{{ 'logo.png' | asset_url }}'" />
+            </a>
             {% else %}
             <h1><a href="/">{{ shop.name }}</a></h1>
             {% endif %}
