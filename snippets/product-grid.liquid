@@ -8,7 +8,7 @@
       {% assign products-per-row = settings.products-per-row %}
 
 
-      <div class="product-index {% if template == 'index' and settings.homepage-product-display == 'carousel' %}{% else %}{% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% cycle ' mobile-half', ' mobile-half', ' mobile-hide' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-2 mobile-half{% endif %}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+      <div class="product-index {% if template == 'index' and settings.homepage-product-display == 'carousel' %}{% else %}{% if products-per-row == "6" %}desktop-2{% cycle ' first', '', '', '', '', ' last' %}{% elsif products-per-row == "4" %}desktop-3{% cycle ' first', '', '', ' last' %}{% elsif products-per-row == "3" %}desktop-4{% cycle ' first', '', ' last' %}{% cycle ' mobile-half', ' mobile-half', ' mobile-hide' %}{% elsif products-per-row == "5" %}desktop-fifth{% cycle ' first', '', '', '', ' last' %}{% elsif products-per-row == "2" %}desktop-6{% cycle ' first', ' last' %}{% endif %} tablet-2 mobile-half{% endif %} thumb" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
       {% include 'product-listing' %}
       </div>
       {% endfor %}
