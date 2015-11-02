@@ -7,23 +7,19 @@
   </div>
 
 
-  <div id="product-photos" class="desktop-5  tablet-3 mobile-hide">
+  <div id="product-photos" class="pdp-carousel desktop-6 tablet-3 mobile-hide">
+
 
     {% for image in product.images %}
     {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
-
-    {% if forloop.first %}
-    <div class="bigimage-{{ product.id }} desktop-10 tablet-5">
-      <img id="{{ product.id }}" data-image-id="{{ image.id }}" src="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt }}' title="{{ product.title }}"/>
-    </div>
-    {% endif %}
-    <a href="{{ image | product_img_url: 'master' }}" data-image-id="{{ image.id }}" class="clicker-{{ product.id }}">
-      <img class="thumbnail desktop-2 tablet-1" src="{{ image | product_img_url: 'medium' }}" alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}" />
-    </a>
+      <div class="bigimage-{{ product.id }} contained desktop-12 tablet-6">
+        <img id="{{ product.id }}" data-image-id="{{ image.id }}" src="{{ image | product_img_url: 'master' }}" alt='{{ image.alt | escape }}' title="{{ product.title }}"/>
+      </div>
     {% endfor %}
+
   </div>
 
-  <script>
+  <!-- <script>
     $('.bigimage-{{ product.id }}').zoom();
 
       $('.clicker-{{ product.id }}').click(function() {
@@ -31,10 +27,10 @@
     $( '.bigimage-{{ product.id }} img' ).attr({ src: newImage });
       return false;
     });
-  </script>
+  </script> -->
 
-  <div id="product-right" class="desktop-7 tablet-3 mobile-3">
-    <div id="product-description" class="desktop-10 tablet-6 mobile-3">
+  <div id="product-right" class="desktop-6 tablet-3 mobile-3">
+    <div id="product-description" class="contained desktop-12 tablet-6 mobile-3">
       {% if settings.vendor %}<h2>{{ product.vendor }}</h2>{% endif %}
       <h1>{{ product.title | escape }}</h1>
       <p class="product-price">
@@ -49,16 +45,16 @@
         {% endif %}
       </p>
 
-      {% include 'product-form' %}
-
       {{ product.description }}
 
-      <div class="desc">
+      {% include 'product-form' %}
+
+      <!-- <div class="desc">
         {% include 'social' with product %}
-      </div>
+      </div> -->
     </div>
 
-    
+
   </div>
   <div class="clear"></div>
 

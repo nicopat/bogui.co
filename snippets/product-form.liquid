@@ -22,14 +22,54 @@
     <label>{{ product.options.first }}:</label>{% for variant in product.variants %}<span class="it-is">{{ variant.option1 | escape }}</span>{% endfor %}
     {% endif %}
   </div>
-  <div class="product-variants"></div><!-- product variants -->  
-  <input  type="hidden" id="{{ variant.id }}" name="id" value="{{ product.variants[0].id }}" />    
+  <div class="product-variants"></div><!-- product variants -->
+  <input  type="hidden" id="{{ variant.id }}" name="id" value="{{ product.variants[0].id }}" />
   {% endif %}
 
-  {% if product.available %}  
+  {% if product.available %}
   <div id="product-add">
-    <label for="quantity">{{ 'products.product.quantity' | t }}</label> 
-    <input min="1" type="number" id="quantity" name="quantity" value="1" />
+    <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+    <span class="dec quantity-button">-</span><input type="number" id="quantity" name="quantity" value="1" /><span class="inc quantity-button">+</span>
+    <script>
+    jQuery(document).ready(function(){
+      // This button will increment the value
+      $('.inc').click(function(e){
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          fieldName = 'quantity';
+          // Get its current value
+          var currentVal = parseInt($('input[name='+fieldName+']').val());
+          // If is not undefined
+          if (!isNaN(currentVal)) {
+              // Increment
+              $('input[name='+fieldName+']').val(currentVal + 1);
+          } else {
+              // Otherwise put a 0 there
+              $('input[name='+fieldName+']').val(1);
+          }
+      });
+      // This button will decrement the value till 0
+      $(".dec").click(function(e) {
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          fieldName = 'quantity';
+          // Get its current value
+          var currentVal = parseInt($('input[name='+fieldName+']').val());
+          // If it isn't undefined or its greater than 0
+          if (!isNaN(currentVal) && currentVal > 0) {
+              // Decrement one
+              $('input[name='+fieldName+']').val(currentVal - 1);
+          } else {
+              // Otherwise put a 0 there
+              $('input[name='+fieldName+']').val(1);
+          }
+      });
+    });
+    </script>
+
+    </script>
     <input type="submit" name="button" class="add" value="{{ 'products.product.add_to_cart' | t }}" />
   </div>
   <p class="add-to-cart-msg"></p>
@@ -55,43 +95,43 @@
     <div id="pop-four" style="display: none">{% include 'question' %}</div>
 
   {% endif %}
-{% endif %}   
+{% endif %}
 
 
 <script>
   // Shopify Product form requirement
   selectCallback = function(variant, selector) {
-    var $product = $('#product-' + selector.product.id);    
+    var $product = $('#product-' + selector.product.id);
     if (variant && variant.available == true) {
       if(variant.compare_at_price > variant.price){
-        $('.was', $product).html(Shopify.formatMoney(variant.compare_at_price, $('form', $product).data('money-format')))        
+        $('.was', $product).html(Shopify.formatMoney(variant.compare_at_price, $('form', $product).data('money-format')))
       } else {
         $('.was', $product).text('')
-      } 
-      $('.product-price', $product).html(Shopify.formatMoney(variant.price, $('form', $product).data('money-format'))) 
+      }
+      $('.product-price', $product).html(Shopify.formatMoney(variant.price, $('form', $product).data('money-format')))
       $('.add', $product).removeClass('disabled').removeAttr('disabled').val('{{ 'products.product.add_to_cart' | t }}');
         } else {
         var message = variant ? "{{ 'products.product.sold_out' | t }}" : "{{ 'products.product.sold_out' | t }}";
         $('.was', $product).text('')
       $('.product-price', $product).text(message);
-      $('.add', $product).addClass('disabled').attr('disabled', 'disabled').val(message); 
-    } 
+      $('.add', $product).addClass('disabled').attr('disabled', 'disabled').val(message);
+    }
 
 
     if (variant && variant.featured_image) {
       var original_image = $(".bigimage-{{ product.id }} img"), new_image = variant.featured_image;
 		Shopify.Image.switchImage(new_image, original_image[0], function (new_image_src, original_image, element) {
 
-        $(element).attr('src', new_image_src);   
+        $(element).attr('src', new_image_src);
 
         $('.thumbnail[data-image-id="' + variant.featured_image.id + '"]').trigger('click');
 
-        {% if template contains 'product' %}        
+        {% if template contains 'product' %}
         $('.zoomImg').attr('src', new_image_src);
         {% endif %}
       });
-    }    
-  }; 
+    }
+  };
 </script>
 
 {% if product.variants.size > 1 or product.options.size > 1 %}
@@ -101,16 +141,15 @@
   $(function() {
 
     $product = $('#product-' + {{ product.id }});
-      if($('.single-option-selector', $product).length == 0) {             
+      if($('.single-option-selector', $product).length == 0) {
       new Shopify.OptionSelectors("product-select-{{ product.id }}", { product: {{ product | json }}, onVariantSelected:
       selectCallback{% if template contains 'product'%}, enableHistoryState: true{% endif %} });
     }
 
     $(".single-option-selector").selecter();
 
-  });    
+  });
 
 
 </script>
 {% endif %}
-

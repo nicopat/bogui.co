@@ -153,7 +153,7 @@ ul#sortme li.current a { text-decoration: underline; }
 
 .product-modal {
   display:none;
-  color: {{ settings.read-more-link-color }}! important;
+  color: {{ settings.read-more-link-color }};
   background: transparent ! important;
   padding: 10px 20px;
   -webkit-transition: background .5s ease,color .5s ease;
@@ -173,8 +173,8 @@ ul#sortme li.current a { text-decoration: underline; }
 }
 
 .product-modal:hover {
-  color: {{ settings.read-more-link-hover-color }}! important;
-  background: rgba(255, 255, 255, 0.5) ! important;
+  color: {{ settings.nav_hover_link_color }};
+  background: rgba(255, 255, 255, 0.75) ! important;
   text-decoration: none;
   cursor: pointer;
 }
