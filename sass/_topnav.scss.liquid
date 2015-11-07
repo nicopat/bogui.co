@@ -377,7 +377,7 @@ ul#nav li.dropdown.hover ul.submenu:hover,
 ul#nav li.dropdown.hover ul.submenu li a:hover {
   display: block;
   background: #fff !important;
-  //z-index: 20;
+  // z-index: 20;
 }
 
 
@@ -387,14 +387,6 @@ ul#nav li ul.submenu li{
   color: {{ settings.nav_dropdown_color }};
   width: 180px;
   text-align: left;
-}
-ul#nav li.dropdown.hover ul.submenu li a:hover {
-  border: 0px !important;
-  z-index: 20;
-}
-
-ul#nav li ul.submenu li:hover {
-  // background: {{ settings.dropdown_hover_background_color }};
 }
 
 ul#nav li ul.submenu li a:hover {
@@ -408,6 +400,11 @@ ul#nav li ul.submenu li a{
   padding-left: 10px;
   color: {{ settings.nav_dropdown_color }};
   text-transform {{ settings.dropdown-transform }}! important;
+}
+
+ul#nav li:hover ul.submenu li:hover a,
+ul#nav li:hover ul.submenu li a:hover {
+  border: 1px solid transparent !important;
 }
 
 
